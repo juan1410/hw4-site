@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form (No JS)</title>
+  <link href="styles.css" rel="stylesheet" >
+</head>
+
+<body>
+  <main class="contact">
+    <h1>Contact Me</h1>
+
+    <form action="https://httpbin.org/post" method="POST" class="contact-form">
+      <input type="hidden" name="possible_bot" value="true">
+
+      <div class="form-field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter name" required>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required>
+      </div>
+
+      <div class="form-field">
+        <label for="comments">Any Comments</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Enter message"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="topic">Topic</label>
+        <select id="topic" name="topic">
+          <option value="">Choose one…</option>
+          <option value="general">General question</option>
+          <option value="portfolio">Portfolio feedback</option>
+          <option value="collab">Collaboration</option>
+        </select>
+      </div>
+
+      <button type="submit">Send</button>
+
+      <output id="error-message" class="output" aria-live="polite"></output>
+      <output id="info-message" class="output" aria-live="polite"></output>
+    </form>
+  </main>
+</body>
+</html>

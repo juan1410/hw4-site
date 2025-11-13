@@ -660,4 +660,79 @@ footer a{
     }
 }
 
-  
+
+
+
+/* form-no-js styling */
+.contact {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2rem;
+    border: 5px solid var(--second-color);
+    /* background: lightblue; */
+    border-radius: 13px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact h1 { 
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-field {
+    color: white;
+    /* background:red; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+input, select, textarea {
+    /* background: red; */
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    font: inherit;
+}
+
+button[type="submit"] {
+    align-self: flex-end;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    border: 5px solid lightblue;
+    font: inherit;
+    cursor: pointer;
+    background: lightblue;
+    background: rgb(0,20,50);
+    color: lightblue;
+    font-size: 20px;
+}
+
+button[type="submit"]:hover {
+    filter: brightness(1.05);
+    background: var(--second-color);
+    color: rgb(0,20,50);
+}
+
+.output {
+    /* background: red; */
+    display: block;
+    min-height: 1.5em;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+#error-message {
+    color: #c0392b;
+}
+
+#info-message {
+    color: #2c3e50;
+}

@@ -10,7 +10,7 @@
 <body>
   <main class="contact">
     
-    <form action="https://httpbin.org/post" method="POST" class="contact-form">
+    <form action="https://httpbin.org/post" method="POST" class="contact-form" novalidate>
       <input type="hidden" name="possible_bot" value="true">
 
       <fieldset>
@@ -18,7 +18,7 @@
 
         <div class="form-field">
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter name" minlength="2" maxlength="30" pattern="[A-Za-z ]*" required>
+          <input type="text" id="name" name="name" placeholder="Enter name" minlength="3" maxlength="30" pattern="[A-Za-z ]*" required>
         </div>
 
         <div class="form-field">
@@ -41,6 +41,8 @@
           </select>
         </div>
       </fieldset>
+
+      <input type="hidden" id="form-errors" name="form-errors" value="">
 
       <button type="submit">Send</button>
 

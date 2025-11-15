@@ -4,6 +4,7 @@ const commentsField = document.querySelector("#comments");
 
 const errorOut = document.querySelector("#error-message");
 const infoOut = document.querySelector("#info-message");
+const form = document.querySelector(".contact-form");
 
 function showError(msg) {
     errorOut.textContent = msg;
@@ -22,25 +23,25 @@ function flashField(field) {
 }
 
 nameField.addEventListener("input", () => {
-  const allowed = /^[A-Za-z ]*$/;
+    const allowed = /^[A-Za-z ]*$/;
 
-  if (!allowed.test(nameField.value)) {
-    showError("Illegal character! Only letters and spaces allowed.");
-    flashField(nameField);
+    if (!allowed.test(nameField.value)) {
+        showError("Illegal character! Only letters and spaces allowed.");
+        flashField(nameField);
 
-    nameField.value = nameField.value.replace(/[^A-Za-z ]/g, "");
-  }
+        nameField.value = nameField.value.replace(/[^A-Za-z ]/g, "");
+    }
 });
 
 emailField.addEventListener("input", () => {
-  const allowed = /^[A-Za-z0-9@._-]*$/;
+    const allowed = /^[A-Za-z0-9@._-]*$/;
 
-  if (!allowed.test(emailField.value)) {
-    showError("Illegal character for email.");
-    flashField(emailField);
+    if (!allowed.test(emailField.value)) {
+        showError("Illegal character for email.");
+        flashField(emailField);
 
-    emailField.value = emailField.value.replace(/[^A-Za-z0-9@._-]/g, "");
-  }
+        emailField.value = emailField.value.replace(/[^A-Za-z0-9@._-]/g, "");
+    }
 });
 
 commentsField.addEventListener("input", () => {
@@ -64,22 +65,20 @@ commentsField.addEventListener("input", () => {
 });
 
 commentsField.addEventListener("focus", () => {
-  infoOut.style.opacity = "1";
+    infoOut.style.opacity = "1";
 });
 
 commentsField.addEventListener("blur", () => {
-  infoOut.style.opacity = "0"; 
+    infoOut.style.opacity = "0"; 
 });
 
 function validateName() {
     nameField.setCustomValidity("");  
 
-    const allowed = /^[A-Za-z ]*$/;
-
-    if (!allowed.test(nameField.value)) {
-        nameField.setCustomValidity("Name can include letters and spaces only.");
+    if (nameField.value.length > 0 && nameField.value[0] !== nameField.value[0].toUpperCase()) {
+        nameField.setCustomValidity("Name must start with an uppercase letter.");
     } else if (nameField.value.length < nameField.minLength) {
-        nameField.setCustomValidity("Name must be at least 2 characters long.");
+        nameField.setCustomValidity("Name must be at least 3 characters long.");
     } else if(nameField.value.length > nameField.maxLength){
         nameField.setCustomValidity("Name must be less than 30 characeters long.")
     }
@@ -89,8 +88,9 @@ function validateEmail() {
     emailField.setCustomValidity("");
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
-
-    if (!emailPattern.test(emailField.value)) {
+    if (emailField.value.startsWith("@")) {
+        emailField.setCustomValidity("Email cannot start with @.");
+    } else if (!emailPattern.test(emailField.value)) {
         emailField.setCustomValidity("Please enter a valid email with a domain (e.g., example@gmail.com).");
     }
 }
@@ -106,3 +106,43 @@ function validateComments() {
 nameField.addEventListener("input", validateName);
 emailField.addEventListener("input", validateEmail);
 commentsField.addEventListener("input", validateComments);
+
+
+let form_errors = []; 
+form.addEventListener("submit", (e) => {
+    validateName();
+    validateEmail();
+    validateComments();
+
+    if (!form.checkValidity()) {
+        e.preventDefault();
+        if (!nameField.checkValidity()) {
+        form_errors.push({
+            field: "name",
+            value: nameField.value,
+            reason: nameField.validationMessage,
+        });
+        }
+        if (!emailField.checkValidity()) {
+        form_errors.push({
+            field: "email",
+            value: emailField.value,
+            reason: emailField.validationMessage,
+        });
+        }
+        if (!commentsField.checkValidity()) {
+        form_errors.push({
+            field: "comments",
+            value: commentsField.value,
+            reason: commentsField.validationMessage,
+        });
+        }
+
+        showError("Please fix the red fields before submitting.");
+        form.reportValidity();
+        return;
+    }
+
+    const hidden = document.querySelector('#form-errors');
+    hidden.value = JSON.stringify(form_errors);
+});

@@ -674,11 +674,17 @@ footer a{
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-.contact h1 { 
+.contact legend { 
     color: white;
     text-align: center;
     margin-top: 0;
     margin-bottom: 1.5rem;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.contact fieldset{
+    border: none;
 }
 
 .contact-form {

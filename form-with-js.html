@@ -8,6 +8,10 @@
 </head>
 
 <body>
+  <script>
+      document.documentElement.classList.add('js');
+  </script>
+
   <main class="contact">
     
     <form action="https://httpbin.org/post" method="POST" class="contact-form" novalidate>
@@ -52,16 +56,12 @@
   </main>
   
   <footer>
+    <section class="switch">
       <label class="theme-switch">
           <input type="checkbox" id="theme-toggle">
           <span class="slider"></span>
       </label>
-
-      <noscript>
-          <p style="color:red; font-weight:bold;">
-              Theme toggle requires JavaScript to function.
-          </p>
-      </noscript>
+    </section>
   </footer>
 
   <script src="form-with-js.js"></script>

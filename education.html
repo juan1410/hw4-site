@@ -69,5 +69,18 @@
     </footer>
 
     <script src="theme.js"></script>
+    <script>
+        if (document.startViewTransition) {
+        document.querySelectorAll("a[href]").forEach((link) => {
+            link.addEventListener("click", (e) => {
+            e.preventDefault();
+            document.startViewTransition(() => {
+                window.location = link.href;
+            });
+            });
+        });
+        }
+    </script>
+    <!-- <script src="transition.js"></script> -->
   </body>
   </html>

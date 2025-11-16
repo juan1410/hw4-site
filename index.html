@@ -12,6 +12,24 @@
           border: 2px solid black;
         }
     </style> -->
+    <style>
+        ::view-transition-old(root) {
+        animation: fadeOut 0.5s ease forwards;
+        }
+        ::view-transition-new(root) {
+        animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+        from { opacity: 1; }
+        to   { opacity: 0; }
+        }
+        @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+        }
+    </style>
+
 
 </head>
 
@@ -80,6 +98,18 @@
     </footer>
 
     <script src="theme.js"></script>
+    <script>
+        if (document.startViewTransition) {
+        document.querySelectorAll("a[href]").forEach((link) => {
+            link.addEventListener("click", (e) => {
+            e.preventDefault();
+            document.startViewTransition(() => {
+                window.location = link.href;
+            });
+            });
+        });
+        }
+    </script>
 
 </body>
 </html>

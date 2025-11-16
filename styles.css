@@ -23,7 +23,7 @@
 
 
 /* CSS animation */
-@keyframes fadeInDown {
+/* @keyframes fadeInDown {
     from {
         opacity: 0;
         transform: translateY(-50px);
@@ -32,10 +32,10 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
 
 main,footer{
-    animation: fadeInDown 1s ease-in-out;
+    /* animation: fadeInDown 1s ease-in-out; */
 }
 html{
     background: var(--main-color, blue);
@@ -478,6 +478,7 @@ main header{
         font-size: 30px;
     }
     header nav ul{
+        pointer-events: none;  
         position: fixed;
         inset: 0;              
         width: 100dvw;
@@ -506,6 +507,7 @@ main header{
     }
     #menu:checked ~ ul{
         max-height: 100%;
+        pointer-events: auto;  
     }
     #menu:checked ~ #logo label::before{
         content:"close";
@@ -856,3 +858,6 @@ input:checked + .slider::before {
     transform: translateX(40px);
     content: "Light";
 }
+
+
+

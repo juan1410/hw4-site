@@ -97,6 +97,14 @@
     </footer>
 
     <script src="theme.js"></script>
+    <script>
+        const menuCheckbox = document.getElementById("menu");
+
+        menuCheckbox.addEventListener("change", () => {
+            document.documentElement.classList.toggle("menu-open", menuCheckbox.checked);
+        });
+    </script>
+
     <!-- <script src="transition.js"></script> -->
 
 

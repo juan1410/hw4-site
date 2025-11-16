@@ -13,7 +13,6 @@
     --third-color: color-mix(in srgb, green 70%, black 30%);
 }
 
-
 [data-theme="light"] {
     --main-color: rgb(216, 236, 242);
     --theme-text: rgb(75, 90, 105);
@@ -23,6 +22,9 @@
 
 html{
     background: var(--main-color, blue);
+}
+.menu-open main {
+    view-transition-name: none;
 }
 #nav-bar{
     padding: 0 var(--main-padding, 0);

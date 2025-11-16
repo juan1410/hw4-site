@@ -687,7 +687,7 @@ main header{
 }
 
 .contact legend { 
-    color: white;
+    color: var(--theme-text);
     text-align: center;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -706,7 +706,7 @@ main header{
 }
 
 .form-field {
-    color: white;
+    color: var(--theme-text);
     /* background:red; */
     display: flex;
     flex-direction: column;
@@ -733,12 +733,11 @@ button[type="submit"] {
     align-self: flex-end;
     padding: 0.8rem 1.5rem;
     border-radius: 10px;
-    border: 5px solid lightblue;
+    border: 5px solid var(--second-color);
     font-family: Courier;     
     cursor: pointer;
-    background: lightblue;
-    background: rgb(0,20,50);
-    color: lightblue;
+    background: var(--main-color);
+    color: var(--second-color);
     font-size: 20px;
     font-weight: 600;
 }
@@ -746,7 +745,8 @@ button[type="submit"] {
 button[type="submit"]:hover {
     filter: brightness(1.05);
     background: var(--second-color);
-    color: rgb(31, 34, 37);
+    /* color: rgb(31, 34, 37); */
+    color: var(--main-color);
 }
 
 .output {
@@ -768,7 +768,7 @@ button[type="submit"]:hover {
 
 #info-message {
     /* background: green; */
-    color:white;
+    color:var(--theme-text);
 }
 
 input:placeholder-shown, textarea:placeholder-shown {

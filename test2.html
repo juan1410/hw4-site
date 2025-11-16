@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Test 2</title>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+
+        /* This is the thing that is animated between pages */
+        main {
+            view-transition-name: page;
+        }
+
+        /* Old page slides left */
+        ::view-transition-old(page) {
+            animation: slide-out-left 0.5s ease forwards;
+        }
+
+        /* New page slides in from the right */
+        ::view-transition-new(page) {
+            animation: slide-in-right 0.5s ease forwards;
+        }
+
+        /* Keyframes */
+        @keyframes slide-out-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-100%); }
+        }
+
+        @keyframes slide-in-right {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0); }
+        }
+    </style>
+  <link href="styles.css" rel="stylesheet" />
+
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="main.html">Test 1</a></li>
+        <li><a href="test2.html">Test 2</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Test 2</h1>
+    <p>This is the second page.</p>
+  </main>
+</body>
+</html>

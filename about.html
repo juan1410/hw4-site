@@ -8,20 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <style>
-        ::view-transition-old(root) {
-        animation: fadeOut 0.5s ease forwards;
+        @view-transition {
+            navigation: auto;
         }
-        ::view-transition-new(root) {
-        animation: fadeIn 0.5s ease forwards;
+        main {
+            view-transition-name: page;
         }
-
-        @keyframes fadeOut {
-        from { opacity: 1; }
-        to   { opacity: 0; }
+        ::view-transition-old(page) {
+            animation: slide-out-left 0.5s ease forwards;
         }
-        @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
+        ::view-transition-new(page) {
+            animation: slide-in-right 0.5s ease forwards;
+        }
+        @keyframes slide-out-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-100%); }
+        }
+        @keyframes slide-in-right {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0); }
         }
     </style>
 
@@ -86,45 +91,6 @@
     </footer>
 
     <script src="theme.js"></script>
-    <!-- <script>
-        if (document.startViewTransition) {
-            document.querySelectorAll("a[href]").forEach(link => {
-                link.addEventListener("click", e => {
-                const url = link.href;
-                if (!url.startsWith(location.origin)) return;
-
-                e.preventDefault();
-
-                const needsReload = url === window.location.href;
-
-                document.startViewTransition(() => {
-                    if (needsReload) {
-                    window.location.reload();  // forces transition to run
-                    } else {
-                    window.location.href = url;
-                    }
-                });
-                });
-            });
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            if (document.startViewTransition) {
-                document.querySelectorAll("a[href]").forEach(link => {
-                link.addEventListener("click", e => {
-                    const url = link.href;
-                    if (!url.startsWith(location.origin)) return;
-
-                    e.preventDefault();
-                    document.startViewTransition(() => {
-                    window.location.href = url;
-                    });
-                });
-                });
-            }
-        });
-
-    </script> -->
-
     <!-- <script src="transition.js"></script> -->
 
 </body>

@@ -7,11 +7,28 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
-  <!-- <style>
-    body {
-      border: 2px solid black;
-    }
-  </style> -->
+  <style>
+      @view-transition {
+          navigation: auto;
+      }
+      main {
+          view-transition-name: page;
+      }
+      ::view-transition-old(page) {
+          animation: slide-out-left 0.5s ease forwards;
+      }
+      ::view-transition-new(page) {
+          animation: slide-in-right 0.5s ease forwards;
+      }
+      @keyframes slide-out-left {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-100%); }
+      }
+      @keyframes slide-in-right {
+          from { transform: translateX(100%); }
+          to   { transform: translateX(0); }
+      }
+  </style>
 </head>
 
 <body>
@@ -97,19 +114,6 @@
   </footer>
 
   <script src="theme.js"></script>
-  <!-- <script>
-      if (document.startViewTransition) {
-      document.querySelectorAll("a[href]").forEach((link) => {
-          link.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.startViewTransition(() => {
-              window.location = link.href;
-          });
-          });
-      });
-      }
-  </script> -->
-  <!-- <script src="transition.js"></script> -->
   
 </body>
 </html>

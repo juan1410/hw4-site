@@ -7,65 +7,34 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <!-- <style>
-        body {
-          border: 2px solid black;
+    <style>
+        @view-transition {
+            navigation: auto;
         }
-    </style> -->
-    <!-- <style>
-        ::view-transition-old(root) {
-        animation: fadeOut 0.5s ease forwards;
+        main {
+            view-transition-name: page;
         }
-        ::view-transition-new(root) {
-        animation: fadeIn 0.5s ease forwards;
+        ::view-transition-old(page) {
+            animation: slide-out-left 0.5s ease forwards;
         }
-
-        @keyframes fadeOut {
-        from { opacity: 1; }
-        to   { opacity: 0; }
+        ::view-transition-new(page) {
+            animation: slide-in-right 0.5s ease forwards;
         }
-        @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
+        @keyframes slide-out-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-100%); }
         }
-    </style> -->
-
+        @keyframes slide-in-right {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0); }
+        }
+    </style>
 
 </head>
 
 <body>
     <script>
         document.documentElement.classList.add('js');
-        // if (document.startViewTransition) {
-        // document.querySelectorAll("a[href]").forEach((link) => {
-        //     link.addEventListener("click", (e) => {
-        //         e.preventDefault();
-        //         document.startViewTransition(() => {
-        //             window.location = link.href;
-        //         });
-        //     });
-        // });
-        // }
-        // if (document.startViewTransition) {
-        //     document.querySelectorAll("a[href]").forEach(link => {
-        //         link.addEventListener("click", e => {
-        //         const url = link.href;
-        //         if (!url.startsWith(location.origin)) return;
-
-        //         e.preventDefault();
-
-        //         const needsReload = url === window.location.href;
-
-        //         document.startViewTransition(() => {
-        //             if (needsReload) {
-        //             window.location.reload();  // forces transition to run
-        //             } else {
-        //             window.location.href = url;
-        //             }
-        //         });
-        //         });
-        //     });
-        // }
     </script>
 
     <header id="nav-bar">
@@ -128,18 +97,8 @@
     </footer>
 
     <script src="theme.js"></script>
-    <!-- <script>
-        if (document.startViewTransition) {
-        document.querySelectorAll("a[href]").forEach((link) => {
-            link.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.startViewTransition(() => {
-                window.location = link.href;
-            });
-            });
-        });
-        }
-    </script> -->
+    <!-- <script src="transition.js"></script> -->
+
 
 </body>
 </html>

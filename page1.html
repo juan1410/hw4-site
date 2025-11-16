@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page 1</title>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+    main {
+      view-transition-name: page;
+    }
+    ::view-transition-old(page) {
+      animation: slide-out-left 0.5s ease forwards;
+    }
+    ::view-transition-new(page) {
+      animation: slide-in-right 0.5s ease forwards;
+    }
+    @keyframes slide-out-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+    @keyframes slide-in-right {
+      from { transform: translateX(100%); }
+      to   { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+        <ul>
+            <li> <a href="page2.html">Go to Page 2</a></li>
+            <li> <a href="page1.html">Go to Page 1</a></li>
+        </ul>
+    </nav>
+  </header>
+  <main><h1>Page 1</h1></main>
+</body>
+</html>
